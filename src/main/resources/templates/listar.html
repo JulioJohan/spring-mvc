@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+
+	<!-- si el arreglo usuarios es igual a 0 poner no hay usuarios en la lista  usuarios.size()== 0 si esta vacio me regresas-->
+	<div th:if="${usuarios.isEmpty()}">no haya usuarios en la lista!</div>
+
+	<!-- Si el arreglo es > 0 usuarios.size()>0 o si esta vacio con el metodo .empty si no es vacio regresas la lista-->
+	<table th:if="${not usuarios.isEmpty()}">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>correo</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<!-- el arreglo se aguardara en una variable local -->
+			<tr th:each="usuario: ${usuarios}">
+				<td th:text="${usuario.nombre}"></td>
+				<td th:text="${usuario.apellido}"></td>
+				<td th:text="${usuario.email}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
